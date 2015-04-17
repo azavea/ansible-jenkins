@@ -9,6 +9,15 @@
 
 - name: Install Jenkins
   apt: pkg=jenkins={{ jenkins_version }} state=present
+  when: jenkins_version is defined and jenkins_version != "latest"
+
+- name: Install Jenkins
+  apt: pkg=jenkins state=present
+  when: jenkins_version is defined and jenkins_version == "latest"
+
+- name: Install Jenkins
+  apt: pkg=jenkins state=present
+  when: jenkins_version is not defined
 
 - name: Configure Nginx site
   template: src=jenkins.conf.j2

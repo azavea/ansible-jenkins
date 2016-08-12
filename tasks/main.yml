@@ -1,27 +1,21 @@
 ---
 - name: Configure the Jenkins APT key
-  apt_key: url=http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key
+  apt_key: url=http://pkg.jenkins.io/debian/jenkins.io.key
            state=present
 
 - name: Configure the Jenkins APT repositories
-  apt_repository: repo="deb http://pkg.jenkins-ci.org/debian binary/"
-                  state=present
+  apt_repository:
+    repo: deb http://pkg.jenkins-ci.org/debian binary/
+    state: present
+    update_cache: yes
 
 - name: Install Jenkins
   apt: pkg=jenkins={{ jenkins_version }} state=present
 
-- name: Configure Nginx site
-  template: src=jenkins.conf.j2
-            dest=/etc/nginx/sites-available/jenkins.conf
-  notify:
-    - Restart Nginx
-
-- name: Enable Nginx site
-  file: src=/etc/nginx/sites-available/jenkins.conf
-        dest=/etc/nginx/sites-enabled/jenkins
-        state=link
-  notify:
-    - Restart Nginx
+- name: Set user-defined configuration options
+  template:
+    src: templates/jenkins.j2
+    dest: /etc/default/jenkins
 
 - name: Enable the Jenkins service
-  service: name=jenkins enabled=yes state=started
+  service: name=jenkins enabled=yes state=restarted

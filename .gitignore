@@ -1,3 +1,9 @@
 .vagrant
 
-examples/roles/azavea.nginx
+# Molecule
+.cache
+*.retry
+*__pycache__*
+*.pyc
+*.log
+.molecule

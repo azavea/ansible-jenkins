@@ -3,7 +3,6 @@ import pytest
 
 @pytest.fixture()
 def AnsibleDefaults(Ansible):
-
     """ Load default variables into dictionary.
 
     Args:
@@ -14,7 +13,6 @@ def AnsibleDefaults(Ansible):
 
 @pytest.fixture()
 def AnsibleFacts(Ansible):
-
     """ Load ansible facts into a dictionary.
 
     Args:
@@ -24,7 +22,6 @@ def AnsibleFacts(Ansible):
 
 
 def test_jenkins_package(Package, AnsibleDefaults):
-
     """ Ensure jenkins package is both installed and at the proper major
     version.
 
@@ -37,12 +34,11 @@ def test_jenkins_package(Package, AnsibleDefaults):
     """
     jenkins = Package("jenkins")
     assert jenkins.is_installed
-    jenkins_major_version = AnsibleDefaults["jenkins_major_version"]
-    assert jenkins.version.startswith(jenkins_major_version)
+    jenkins_version = AnsibleDefaults["jenkins_version"]
+    assert jenkins.version.startswith(jenkins_version.partition('*')[0])
 
 
 def test_jenkins_service(Service, Sudo):
-
     """ Ensure Jenkins service is enabled and running.
 
     Args:
@@ -59,8 +55,7 @@ def test_jenkins_service(Service, Sudo):
         assert jenkins.is_running
 
 
-def test_jenkins_connection(Socket, Sudo, AnsibleDefaults):
-
+def test_jenkins_connection(Socket, AnsibleDefaults):
     """ Ensure that jenkins is listening on the proper port.
 
     Args:
@@ -73,5 +68,4 @@ def test_jenkins_connection(Socket, Sudo, AnsibleDefaults):
     """
     jenkins_port = AnsibleDefaults["jenkins_http_port"]
     jenkins_socket = Socket("tcp://0.0.0.0:{}".format(jenkins_port))
-    with Sudo():
-        assert jenkins_socket.is_listening
+    assert jenkins_socket.is_listening

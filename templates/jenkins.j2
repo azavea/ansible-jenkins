@@ -50,7 +50,6 @@ MAXOPENFILES=8192
 #
 #   If commented out, the value from the OS is inherited,  which is normally 022 (as of Ubuntu 12.04,
 #   by default umask comes from pam_umask(8) and /etc/login.defs
-
 UMASK={{ jenkins_umask }}
 
 # port for HTTP connector (default 8080; disable with -1)
@@ -63,8 +62,10 @@ PREFIX=/$NAME
 # --javahome=$JAVA_HOME
 # --httpPort=$HTTP_PORT (default 8080; disable with -1)
 # --httpsPort=$HTTP_PORT
-# --ajp13Port=$AJP_PORT
 # --argumentsRealm.passwd.$ADMIN_USER=[password]
-# --argumentsRealm.$ADMIN_USER=admin
+# --argumentsRealm.roles.$ADMIN_USER=admin
 # --webroot=~/.jenkins/war
+# --prefix=$PREFIX
+
 JENKINS_ARGS="{{ jenkins_args | join(" ") }}"
+

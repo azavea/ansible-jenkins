@@ -4,7 +4,6 @@ jenkins_name: "jenkins"
 jenkins_java_opts:
  - "-Djava.awt.headless=true"
  - "-Djava.net.preferIPv4Stack=true"
-jenkins_java_user_opts: []
 jenkins_java_location: "/usr/bin/java"
 jenkins_pidfile_path: "/var/run/$NAME/$NAME.pid"
 jenkins_war_path: "/usr/share/$NAME/$NAME.war"
@@ -17,5 +16,4 @@ jenkins_set_umask: False
 jenkins_args:
     - "--webroot=/var/cache/$NAME/war"
     - "--httpPort=$HTTP_PORT"
-jenkins_user_args: []
 jenkins_http_port: "8080"

@@ -4,18 +4,14 @@
            state=present
 
 - name: Configure the Jenkins APT repositories
-  apt_repository:
-    repo: deb http://pkg.jenkins-ci.org/debian binary/
-    state: present
-    update_cache: yes
+  apt_repository: repo="deb http://pkg.jenkins-ci.org/debian binary/"
+                  state=present
 
 - name: Install Jenkins
   apt: pkg=jenkins={{ jenkins_version }} state=present
 
 - name: Set user-defined configuration options
-  template:
-    src: templates/jenkins.j2
-    dest: /etc/default/jenkins
-
-- name: Enable the Jenkins service
-  service: name=jenkins enabled=yes state=restarted
+  template: src=jenkins.j2
+            dest=/etc/default/jenkins
+  notify:
+    - Restart Jenkins

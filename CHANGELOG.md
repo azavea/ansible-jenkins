@@ -1,3 +1,10 @@
+## 1.0.0
+
+- Remove Nginx dependency.
+- Add Java dependency.
+- Replace Vagrant testing setup with Molecule.
+- Add Molecule test support for Ubuntu 16.04.
+
 ## 0.1.1
 
 - Required minimum Ansible version is now 1.8.

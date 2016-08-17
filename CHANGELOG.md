@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Equivalent to 1.0.0
+
 ## 1.0.0
 
 - Remove Nginx dependency.

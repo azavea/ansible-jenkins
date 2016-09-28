@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Update dependency role spec.
+
+
 ## 1.0.1
 
 - Equivalent to 1.0.0

@@ -16,6 +16,8 @@ An Ansible role for installing Jenkins.
 - `jenkins_umask` -  Use with the `jenkins_set_umask` to modify Jenkins default file permissions. (default: `022`)
 - `jenkins_args` - List of arguments to pass to the Jenkins daemon. (defaults: `[--webroot=/var/cache/$NAME/war, --httpPort=$HTTP_PORT]`) See [Starting and Accessing Jenkins](https://wiki.jenkins-ci.org/display/JENKINS/Starting+and+Accessing+Jenkins) for a full set of arguments. 
 - `jenkins_http_port` - Port on which Jenkins will run. (default: `8080`)
+- `jenkins_java_version` - Version of OpenJDK to install. (default: `8u*`)
+- `jenkins_java_major_version` - Major version of OpenJDK to install. (default: `8`)
 
 ## Testing
 Tests are done using [molecule](http://molecule.readthedocs.io/). To run the test suite, install molecule and its dependencies and run ` molecule test` from the folder containing molecule.yml. To add additional tests, add a [testinfra](http://testinfra.readthedocs.org/) python script in the [tests](./tests/) directory, or add a function to [test_jenkins.py](./tests/test_jenkins.py). Information about available Testinfra modules is available [here](http://testinfra.readthedocs.io/en/latest/modules.html).

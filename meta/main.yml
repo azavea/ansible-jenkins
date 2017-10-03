@@ -13,5 +13,5 @@ galaxy_info:
   - system
 dependencies:
   - name: "azavea.java"
-    java_major_version: "8"
-    java_version: "8u*"
+    java_version: "{{ jenkins_java_version }}"
+    java_major_version: "{{ jenkins_java_major_version }}"

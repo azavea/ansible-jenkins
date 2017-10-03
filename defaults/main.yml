@@ -17,3 +17,5 @@ jenkins_args:
     - "--webroot=/var/cache/$NAME/war"
     - "--httpPort=$HTTP_PORT"
 jenkins_http_port: "8080"
+jenkins_java_major_version: "8"
+jenkins_java_version: "8u*"

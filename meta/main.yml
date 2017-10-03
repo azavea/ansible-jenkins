@@ -12,14 +12,4 @@ galaxy_info:
   categories:
   - system
 dependencies:
-  - src: "azavea.java"
-    java_major_version: "7"
-    java_version: "7u111*"
-    when:
-      "{{ ansible_distribution_version | version_compare('16.04','<') }}"
-
-  - src: "azavea.java"
-    java_major_version: "8"
-    java_version: "8u91*"
-    when:
-      "{{ ansible_distribution_version | version_compare('16.04','>=') }}"
+  - name: "azavea.java"

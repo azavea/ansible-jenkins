@@ -23,7 +23,7 @@ Tests are done using [molecule](http://molecule.readthedocs.io/). To run the tes
 ### Example 
 ```
 # Download molecule, dependencies
-$ pip install molecule
+$ pip install molecule==1.25 ansible==2.4.*
 
 # Change to the top-level project directory, which contains molecule.yml
 $ cd /path/to/ansible-jenkins

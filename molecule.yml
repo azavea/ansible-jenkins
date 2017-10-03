@@ -3,6 +3,10 @@ ansible:
   config_file: ansible.cfg
   verbose:
   become: True
+  host_vars:
+    ansible-jenkins-xenial64:
+      ansible_python_interpreter: /usr/bin/python3
+
 dependency:
   requirements_file: requirements.yml
 

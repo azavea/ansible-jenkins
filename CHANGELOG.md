@@ -1,3 +1,8 @@
+## 1.2.0
+
+- Remove Java dependency version constraints.
+- Update to Molecule 1.25.
+
 ## 1.1.1
 
 - Equivalent to 1.1.0
